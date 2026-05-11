@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ching-tech.com/sitemap.xml
