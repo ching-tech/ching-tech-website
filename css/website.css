@@ -8,8 +8,8 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #0e0e10;
-    color: #f0f0f0;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 /* Skip to content link */
@@ -18,7 +18,7 @@ body {
     top: -100%;
     left: 1rem;
     z-index: 9999;
-    background: #0891b2;
+    background: var(--accent-strong);
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 0 0 8px 8px;
@@ -54,7 +54,7 @@ button:focus-visible,
 /* Navbar active section highlight */
 .navbar-item.is-active-nav {
     color: #67e8f9 !important;
-    border-bottom: 2px solid #22d3ee;
+    border-bottom: 2px solid var(--accent);
 }
 
 /* Hero Section */
@@ -182,29 +182,29 @@ button:focus-visible,
 .hero-section .corner-tl {
     top: -2px;
     left: -2px;
-    border-top: 3px solid #22d3ee;
-    border-left: 3px solid #22d3ee;
+    border-top: 3px solid var(--accent);
+    border-left: 3px solid var(--accent);
 }
 
 .hero-section .corner-tr {
     top: -2px;
     right: -2px;
-    border-top: 3px solid #22d3ee;
-    border-right: 3px solid #22d3ee;
+    border-top: 3px solid var(--accent);
+    border-right: 3px solid var(--accent);
 }
 
 .hero-section .corner-bl {
     bottom: -2px;
     left: -2px;
-    border-bottom: 3px solid #22d3ee;
-    border-left: 3px solid #22d3ee;
+    border-bottom: 3px solid var(--accent);
+    border-left: 3px solid var(--accent);
 }
 
 .hero-section .corner-br {
     bottom: -2px;
     right: -2px;
-    border-bottom: 3px solid #22d3ee;
-    border-right: 3px solid #22d3ee;
+    border-bottom: 3px solid var(--accent);
+    border-right: 3px solid var(--accent);
 }
 
 /* Hover 目標鎖定效果 */
@@ -246,7 +246,7 @@ button:focus-visible,
 }
 
 .about-section {
-    background-color: #16171b;
+    background-color: var(--bg-soft);
 }
 
 .services-section {
@@ -258,11 +258,11 @@ button:focus-visible,
 }
 
 .agv-section {
-    background-color: #16171b;
+    background-color: var(--bg-soft);
 }
 
 .robot-section {
-    background-color: #0e0e10;
+    background-color: var(--bg);
 }
 
 .process-section {
@@ -273,7 +273,7 @@ button:focus-visible,
 }
 
 .tech-section {
-    background-color: #0e0e10;
+    background-color: var(--bg);
 }
 
 .cases-section {
@@ -343,7 +343,7 @@ button:focus-visible,
 }
 
 .service-card p {
-    color: #cfd0d4;
+    color: var(--text-muted);
     font-size: 0.95rem;
 }
 
@@ -403,7 +403,7 @@ button:focus-visible,
 
 .process-icon-glow i {
     font-size: 2rem;
-    color: #22d3ee;
+    color: var(--accent);
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
 }
 
@@ -431,14 +431,14 @@ button:focus-visible,
 .process-connector.horizontal {
     width: 50px;
     height: 2px;
-    background: linear-gradient(90deg, #22d3ee, #0891b2);
+    background: linear-gradient(90deg, var(--accent), var(--accent-strong));
     box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
 .process-connector.vertical {
     width: 2px;
     height: 30px;
-    background: linear-gradient(180deg, #22d3ee, #0891b2);
+    background: linear-gradient(180deg, var(--accent), var(--accent-strong));
     box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
     margin-left: auto;
     margin-right: 16.5%;
@@ -446,7 +446,7 @@ button:focus-visible,
 
 /* 技術卡片 */
 .tech-card {
-    background-color: #16171b;
+    background-color: var(--bg-soft);
     border-radius: 12px;
     padding: 2.5rem;
     text-align: center;
@@ -463,13 +463,13 @@ button:focus-visible,
 }
 
 .tech-card p {
-    color: #cfd0d4;
+    color: var(--text-muted);
 }
 
 .tech-tags .tag {
     background-color: rgba(62, 144, 240, 0.2);
     color: #67e8f9;
-    border: 1px solid #22d3ee;
+    border: 1px solid var(--accent);
 }
 
 /* 案例卡片 - 圓形圖片樣式 */
@@ -483,7 +483,7 @@ button:focus-visible,
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid #22d3ee;
+    border: 3px solid var(--accent);
     box-shadow: 0 0 20px rgba(62, 144, 240, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -500,7 +500,7 @@ button:focus-visible,
 }
 
 .case-desc {
-    color: #cfd0d4;
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
@@ -525,7 +525,7 @@ button:focus-visible,
 }
 
 .contact-item p {
-    color: #cfd0d4;
+    color: var(--text-muted);
 }
 
 .contact-item a {
@@ -538,7 +538,7 @@ button:focus-visible,
 
 /* Footer */
 .footer {
-    background-color: #0a0a0c;
+    background-color: var(--bg);
     padding: 3rem 1.5rem;
 }
 
@@ -551,7 +551,7 @@ button:focus-visible,
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    border: 2px solid #22d3ee;
+    border: 2px solid var(--accent);
     background: rgba(26, 26, 26, 0.9);
     color: #67e8f9;
     font-size: 1.2rem;
@@ -573,7 +573,7 @@ button:focus-visible,
 }
 
 .back-to-top:hover {
-    background: #0891b2;
+    background: var(--accent-strong);
     color: #fff;
     box-shadow: 0 6px 25px rgba(62, 144, 240, 0.6);
 }
@@ -609,7 +609,7 @@ button:focus-visible,
     .process-connector.horizontal {
         width: 2px;
         height: 30px;
-        background: linear-gradient(180deg, #22d3ee, #0891b2);
+        background: linear-gradient(180deg, var(--accent), var(--accent-strong));
     }
 
     .process-connector.vertical {
@@ -661,11 +661,11 @@ button:focus-visible,
 }
 
 ::-webkit-scrollbar-track {
-    background: #0e0e10;
+    background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #0891b2;
+    background: var(--accent-strong);
     border-radius: 4px;
 }
 
@@ -680,19 +680,19 @@ a {
 
 /* 按鈕樣式增強 */
 .button.is-info:not(.is-outlined) {
-    background: linear-gradient(135deg, #22d3ee, #67e8f9);
+    background: linear-gradient(135deg, var(--accent), #67e8f9);
     border: none;
 }
 
 .button.is-info:not(.is-outlined):hover {
-    background: linear-gradient(135deg, #67e8f9, #22d3ee);
+    background: linear-gradient(135deg, #67e8f9, var(--accent));
     box-shadow: 0 5px 15px rgba(62, 144, 240, 0.4);
 }
 
 .button.is-info.is-outlined {
     background: transparent;
-    border-color: #22d3ee;
-    color: #22d3ee;
+    border-color: var(--accent);
+    color: var(--accent);
     transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -700,7 +700,7 @@ a {
 .button.is-info.is-outlined:focus,
 .button.is-info.is-outlined:active {
     background: rgba(62, 144, 240, 0.15);
-    border-color: #22d3ee;
+    border-color: var(--accent);
     color: #67e8f9;
     outline: none;
     box-shadow: none;
