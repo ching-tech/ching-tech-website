@@ -8,8 +8,8 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #1a1a1a;
-    color: #e0e0e0;
+    background-color: #0e0e10;
+    color: #f0f0f0;
 }
 
 /* Skip to content link */
@@ -18,7 +18,7 @@ body {
     top: -100%;
     left: 1rem;
     z-index: 9999;
-    background: #3e90f0;
+    background: #0891b2;
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 0 0 8px 8px;
@@ -36,7 +36,7 @@ a:focus-visible,
 button:focus-visible,
 .button:focus-visible,
 [role="button"]:focus-visible {
-    outline: 2px solid #5da9f9;
+    outline: 2px solid #67e8f9;
     outline-offset: 2px;
 }
 
@@ -53,8 +53,8 @@ button:focus-visible,
 
 /* Navbar active section highlight */
 .navbar-item.is-active-nav {
-    color: #5da9f9 !important;
-    border-bottom: 2px solid #3e90f0;
+    color: #67e8f9 !important;
+    border-bottom: 2px solid #22d3ee;
 }
 
 /* Hero Section */
@@ -113,7 +113,7 @@ button:focus-visible,
 }
 
 .hero-section .container .title.is-1 .has-text-info {
-    color: #5da9f9;
+    color: #67e8f9;
     text-shadow: 0 0 10px rgba(93, 169, 249, 0.7), 0 0 20px rgba(93, 169, 249, 0.5), 0 0 35px rgba(93, 169, 249, 0.3);
 }
 
@@ -123,7 +123,7 @@ button:focus-visible,
 }
 
 .hero-section .container .subtitle.is-6 {
-    color: #7dd3fc;
+    color: #a5f3fc;
     font-weight: 500;
     text-shadow: 0 0 10px rgba(125, 211, 252, 0.6), 0 0 20px rgba(125, 211, 252, 0.4);
 }
@@ -136,7 +136,7 @@ button:focus-visible,
 /* Hero 科技感按鈕 */
 .hero-section .button.is-info {
     background: linear-gradient(135deg, rgba(62, 144, 240, 0.5), rgba(93, 169, 249, 0.4));
-    border-color: #5da9f9;
+    border-color: #67e8f9;
     color: #ffffff;
     font-weight: 600;
     text-shadow: 0 0 8px rgba(93, 169, 249, 0.5);
@@ -182,29 +182,29 @@ button:focus-visible,
 .hero-section .corner-tl {
     top: -2px;
     left: -2px;
-    border-top: 3px solid #3e90f0;
-    border-left: 3px solid #3e90f0;
+    border-top: 3px solid #22d3ee;
+    border-left: 3px solid #22d3ee;
 }
 
 .hero-section .corner-tr {
     top: -2px;
     right: -2px;
-    border-top: 3px solid #3e90f0;
-    border-right: 3px solid #3e90f0;
+    border-top: 3px solid #22d3ee;
+    border-right: 3px solid #22d3ee;
 }
 
 .hero-section .corner-bl {
     bottom: -2px;
     left: -2px;
-    border-bottom: 3px solid #3e90f0;
-    border-left: 3px solid #3e90f0;
+    border-bottom: 3px solid #22d3ee;
+    border-left: 3px solid #22d3ee;
 }
 
 .hero-section .corner-br {
     bottom: -2px;
     right: -2px;
-    border-bottom: 3px solid #3e90f0;
-    border-right: 3px solid #3e90f0;
+    border-bottom: 3px solid #22d3ee;
+    border-right: 3px solid #22d3ee;
 }
 
 /* Hover 目標鎖定效果 */
@@ -246,7 +246,7 @@ button:focus-visible,
 }
 
 .about-section {
-    background-color: #242424;
+    background-color: #16171b;
 }
 
 .services-section {
@@ -258,11 +258,11 @@ button:focus-visible,
 }
 
 .agv-section {
-    background-color: #242424;
+    background-color: #16171b;
 }
 
 .robot-section {
-    background-color: #1a1a1a;
+    background-color: #0e0e10;
 }
 
 .process-section {
@@ -273,7 +273,7 @@ button:focus-visible,
 }
 
 .tech-section {
-    background-color: #1a1a1a;
+    background-color: #0e0e10;
 }
 
 .cases-section {
@@ -343,7 +343,7 @@ button:focus-visible,
 }
 
 .service-card p {
-    color: #c0c0c0;
+    color: #cfd0d4;
     font-size: 0.95rem;
 }
 
@@ -403,7 +403,7 @@ button:focus-visible,
 
 .process-icon-glow i {
     font-size: 2rem;
-    color: #38bdf8;
+    color: #22d3ee;
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
 }
 
@@ -431,14 +431,14 @@ button:focus-visible,
 .process-connector.horizontal {
     width: 50px;
     height: 2px;
-    background: linear-gradient(90deg, #38bdf8, #8b5cf6);
+    background: linear-gradient(90deg, #22d3ee, #0891b2);
     box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
 .process-connector.vertical {
     width: 2px;
     height: 30px;
-    background: linear-gradient(180deg, #38bdf8, #8b5cf6);
+    background: linear-gradient(180deg, #22d3ee, #0891b2);
     box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
     margin-left: auto;
     margin-right: 16.5%;
@@ -446,7 +446,7 @@ button:focus-visible,
 
 /* 技術卡片 */
 .tech-card {
-    background-color: #242424;
+    background-color: #16171b;
     border-radius: 12px;
     padding: 2.5rem;
     text-align: center;
@@ -463,13 +463,13 @@ button:focus-visible,
 }
 
 .tech-card p {
-    color: #c0c0c0;
+    color: #cfd0d4;
 }
 
 .tech-tags .tag {
     background-color: rgba(62, 144, 240, 0.2);
-    color: #5da9f9;
-    border: 1px solid #3e90f0;
+    color: #67e8f9;
+    border: 1px solid #22d3ee;
 }
 
 /* 案例卡片 - 圓形圖片樣式 */
@@ -483,7 +483,7 @@ button:focus-visible,
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid #3e90f0;
+    border: 3px solid #22d3ee;
     box-shadow: 0 0 20px rgba(62, 144, 240, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -500,7 +500,7 @@ button:focus-visible,
 }
 
 .case-desc {
-    color: #c0c0c0;
+    color: #cfd0d4;
     font-size: 0.9rem;
 }
 
@@ -525,11 +525,11 @@ button:focus-visible,
 }
 
 .contact-item p {
-    color: #c0c0c0;
+    color: #cfd0d4;
 }
 
 .contact-item a {
-    color: #5da9f9;
+    color: #67e8f9;
 }
 
 .contact-item a:hover {
@@ -538,7 +538,7 @@ button:focus-visible,
 
 /* Footer */
 .footer {
-    background-color: #0d0d0d;
+    background-color: #0a0a0c;
     padding: 3rem 1.5rem;
 }
 
@@ -551,9 +551,9 @@ button:focus-visible,
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    border: 2px solid #3e90f0;
+    border: 2px solid #22d3ee;
     background: rgba(26, 26, 26, 0.9);
-    color: #5da9f9;
+    color: #67e8f9;
     font-size: 1.2rem;
     cursor: pointer;
     display: flex;
@@ -573,7 +573,7 @@ button:focus-visible,
 }
 
 .back-to-top:hover {
-    background: #3e90f0;
+    background: #0891b2;
     color: #fff;
     box-shadow: 0 6px 25px rgba(62, 144, 240, 0.6);
 }
@@ -609,7 +609,7 @@ button:focus-visible,
     .process-connector.horizontal {
         width: 2px;
         height: 30px;
-        background: linear-gradient(180deg, #38bdf8, #8b5cf6);
+        background: linear-gradient(180deg, #22d3ee, #0891b2);
     }
 
     .process-connector.vertical {
@@ -661,16 +661,16 @@ button:focus-visible,
 }
 
 ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    background: #0e0e10;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3e90f0;
+    background: #0891b2;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #5da9f9;
+    background: #67e8f9;
 }
 
 /* 連結樣式 */
@@ -680,19 +680,19 @@ a {
 
 /* 按鈕樣式增強 */
 .button.is-info:not(.is-outlined) {
-    background: linear-gradient(135deg, #3e90f0, #5da9f9);
+    background: linear-gradient(135deg, #22d3ee, #67e8f9);
     border: none;
 }
 
 .button.is-info:not(.is-outlined):hover {
-    background: linear-gradient(135deg, #5da9f9, #3e90f0);
+    background: linear-gradient(135deg, #67e8f9, #22d3ee);
     box-shadow: 0 5px 15px rgba(62, 144, 240, 0.4);
 }
 
 .button.is-info.is-outlined {
     background: transparent;
-    border-color: #3e90f0;
-    color: #3e90f0;
+    border-color: #22d3ee;
+    color: #22d3ee;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -700,8 +700,8 @@ a {
 .button.is-info.is-outlined:focus,
 .button.is-info.is-outlined:active {
     background: rgba(62, 144, 240, 0.15);
-    border-color: #3e90f0;
-    color: #5da9f9;
+    border-color: #22d3ee;
+    color: #67e8f9;
     outline: none;
     box-shadow: none;
 }
