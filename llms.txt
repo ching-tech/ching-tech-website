@@ -1,0 +1,30 @@
+# 擎添工業 ChingTech — 工業自動化
+
+> 1984 年成立於新北市五股的機電自動化工程公司，40 年 PLC、AGV／AMR、
+> KUKA／FANUC／YASKAWA 機械手臂整合經驗。專精機械自動控制系統、無人搬運
+> 與系統整合，打造工業 4.0 智慧工廠。近年把 40 年工程力與 AI 一起打包成 CTOS。
+
+## 公司
+- 名稱：擎添工業（ChingTech）
+- 成立：1984 年，深耕自動化逾 40 年
+- 地址：新北市五股區成泰路一段 194-8 號 J 棟（248）
+- 電話：(02) 2903-2788
+- 傳真：(02) 2903-9518
+- 官網：https://ching-tech.com
+
+## 核心業務
+- 機械自動控制系統（PLC、運動控制）
+- 自動電氣生產客製化
+- 電腦數控系統
+- 機械手臂整合（KUKA／FANUC／YASKAWA）
+- AGV／AMR 無人搬運系統
+- 工業 4.0 智慧工廠、系統整合服務
+
+## AI 升級
+- 企業 AI 工作平台 ChingTech OS（CTOS）與 LINE AI 員工 CTOS-Lite，由 40 年工程力延伸。
+- 平台介紹：https://ching-tech.github.io/ching-tech-os.html
+
+## 連結
+- 官網：https://ching-tech.com
+- 案例：https://ching-tech.github.io/chingtech-case-hub/
+- LINE AI 員工：https://ching-tech.github.io/ctos-lite-pages/
