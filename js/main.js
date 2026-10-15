@@ -163,34 +163,66 @@ void main(){
   };
   Promise.race([ready, new Promise(r => setTimeout(r, 4000))]).then(go);
 
-  if (reduce) return;
+  if (reduce) { ['#about','#services','#process'].forEach(s => $(s).classList.add('static')); $('#yr').textContent = new Date().getFullYear(); $$('.beat').forEach(b => b.classList.add('on')); $$('#svc li').forEach(l => l.classList.add('on')); return; }
 
-  /* ---------- manifesto: 逐字點亮 ---------- */
-  const mf = $('#manifesto'), txt = mf.textContent;
-  mf.setAttribute('aria-label', txt); mf.textContent = '';
-  [...txt].forEach(ch => { const s = document.createElement('span'); s.className = 'c'; s.setAttribute('aria-hidden', 'true'); s.textContent = ch; mf.append(s); });
-  gsap.fromTo($$('.c', mf), { opacity: .16 }, { opacity: 1, stagger: .06, ease: 'none',
-    scrollTrigger: { trigger: mf, start: 'top 82%', end: 'bottom 48%', scrub: true } });
+  /* ---------- 壹 四十年:年份推進 ---------- */
+  const act1 = $('#about'), beats = $$('.beat', act1), yr = $('#yr');
+  const bg1 = $('.bg1', act1), bg2 = $('.bg2', act1);
+  const endY = new Date().getFullYear();
+  ScrollTrigger.create({ trigger: $('.act1-stage', act1), start: 'top top', end: '+=320%', pin: true, scrub: true, anticipatePin: 1,
+    onUpdate: s => {
+      const p = s.progress;
+      yr.textContent = Math.round(1984 + (endY - 1984) * Math.min(1, p / .92));
+      const i = p < .32 ? 0 : p < .68 ? 1 : 2;
+      beats.forEach((b, k) => b.classList.toggle('on', k === i));
+      gsap.set(bg1, { scale: 1.02 + p * .12, opacity: p < .6 ? 1 : Math.max(0, 1 - (p - .6) / .2) });
+      gsap.set(bg2, { scale: 1.1 - p * .08, opacity: p < .6 ? 0 : Math.min(1, (p - .6) / .2) });
+    } });
 
-  /* ---------- count up ---------- */
-  $$('[data-count]').forEach(el => {
-    const to = +el.dataset.count, o = { v: 0 };
-    ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () =>
-      gsap.to(o, { v: to, duration: 1.8, ease: 'power3.out', onUpdate: () => el.textContent = Math.round(o.v) }) });
+  /* ---------- 貳 兩種戰場:左右展開 ---------- */
+  ScrollTrigger.matchMedia({
+    '(min-width: 901px)': () => {
+      const split = $('#split'), clean = $('.field.clean'), heavy = $('.field.heavy');
+      const mark = (a, b) => { a.classList.add('dom'); b.classList.remove('dom'); };
+      mark(clean, heavy);
+      const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: split, start: 'top top', end: '+=170%', pin: true, scrub: .6, anticipatePin: 1,
+        onUpdate: s => s.progress < .5 ? mark(clean, heavy) : mark(heavy, clean) } });
+      tl.to(clean, { flexGrow: 2.2, duration: 1 }, 0).to(heavy, { flexGrow: .45, duration: 1 }, 0)
+        .to(clean, { flexGrow: .45, duration: 2 }, 1.2).to(heavy, { flexGrow: 2.2, duration: 2 }, 1.2);
+      return () => { clean.classList.remove('dom'); heavy.classList.remove('dom'); };
+    },
+    '(max-width: 900px)': () => { $$('.field').forEach(f => f.classList.add('dom')); }
   });
 
-  /* ---------- image parallax ---------- */
-  $$('.about-img img, .feature-media img').forEach(img =>
-    gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none',
-      scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
+  /* ---------- 參 整合:捲動切換業務 ---------- */
+  const svcLi = $$('#svc li'), svcImg = $$('#svc-media img');
+  const setSvc = i => { svcLi.forEach((l, k) => l.classList.toggle('on', k === i)); svcImg.forEach((m, k) => m.classList.toggle('on', k === i)); };
+  const act3 = $('#services'), n3 = svcLi.length;
+  const st3 = ScrollTrigger.create({ trigger: $('.act3-stage', act3), start: 'top top', end: () => '+=' + n3 * 46 + '%', pin: true, anticipatePin: 1,
+    onUpdate: s => setSvc(Math.min(n3 - 1, Math.floor(s.progress * n3))) });
+  $$('#svc button').forEach((btn, i) => btn.addEventListener('click', () => {
+    const y = st3.start + (st3.end - st3.start) * (i + .5) / n3;
+    lenis ? lenis.scrollTo(y, { duration: 1.2 }) : scrollTo(0, y);
+  }));
 
-  /* ---------- process ---------- */
-  const steps = $('.steps');
-  $$('li', steps).forEach(li => ScrollTrigger.create({ trigger: li, start: 'top 62%', onToggle: s => li.classList.toggle('on', s.isActive || s.progress === 1 && li.classList.contains('on')),
-    onEnter: () => li.classList.add('on'), onLeaveBack: () => li.classList.remove('on') }));
-  ScrollTrigger.create({ trigger: steps, start: 'top 62%', end: 'bottom 62%', scrub: true, onUpdate: s => steps.style.setProperty('--p', s.progress) });
+  /* ---------- 肆 服務流程:光軌 ---------- */
+  const nodes = $$('#rail-nodes li'), big = $('.rail-big'), prog = $('#rail-prog'), agv = $('#rail-agv');
+  let railCur = 0;
+  const setRail = i => {
+    nodes.forEach((n, k) => { n.classList.toggle('on', k === i); n.classList.toggle('past', k < i); });
+    if (i === railCur) return; railCur = i;
+    big.classList.add('swap');
+    setTimeout(() => { $('#rail-n').textContent = String(i + 1).padStart(2, '0'); $('#rail-t').textContent = nodes[i].dataset.t; $('#rail-s').textContent = nodes[i].dataset.s; big.classList.remove('swap'); }, 220);
+  };
+  ScrollTrigger.create({ trigger: $('.rail-stage'), start: 'top top', end: '+=260%', pin: true, scrub: true, anticipatePin: 1,
+    onUpdate: s => {
+      const p = s.progress;
+      prog.style.transform = 'scaleX(' + p + ')';
+      agv.style.left = (p * 100) + '%';
+      setRail(Math.min(nodes.length - 1, Math.round(p * (nodes.length - 1))));
+    } });
 
-  /* ---------- cases: 橫向 pin ---------- */
+  /* ---------- 案例:橫向 pin ---------- */
   ScrollTrigger.matchMedia({
     '(min-width: 901px)': () => {
       const track = $('#track'), pin = $('.cases-pin');
@@ -199,4 +231,13 @@ void main(){
         scrollTrigger: { trigger: pin, start: 'top top', end: () => '+=' + dist(), pin: true, scrub: .6, invalidateOnRefresh: true, anticipatePin: 1 } });
     }
   });
+
+  /* ---------- AI 區視差 ---------- */
+  gsap.fromTo('.ai-final > img', { yPercent: -4, scale: 1.16 }, { yPercent: 4, scale: 1.16, ease: 'none', scrollTrigger: { trigger: '.ai-final', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+  /* ---------- 章節指示 ---------- */
+  const chap = $('#chapter'), chNo = $('.ch-no', chap), chName = $('.ch-name', chap);
+  $$('[data-chapter]').forEach(sec => { const [no, name] = sec.dataset.chapter.split('|');
+    ScrollTrigger.create({ trigger: sec, start: 'top 60%', end: 'bottom 40%', onToggle: s => { if (s.isActive) { chNo.textContent = no; chName.textContent = name; chap.classList.add('on'); } },
+      onLeaveBack: () => { if (sec === $('[data-chapter]')) chap.classList.remove('on'); } }); });
 })();
