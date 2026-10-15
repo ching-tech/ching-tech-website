@@ -222,14 +222,11 @@ void main(){
       setRail(Math.min(nodes.length - 1, Math.round(p * (nodes.length - 1))));
     } });
 
-  /* ---------- 案例:橫向 pin ---------- */
-  ScrollTrigger.matchMedia({
-    '(min-width: 901px)': () => {
-      const track = $('#track'), pin = $('.cases-pin');
-      const dist = () => track.scrollWidth - innerWidth + 40;
-      gsap.to(track, { x: () => -dist(), ease: 'none',
-        scrollTrigger: { trigger: pin, start: 'top top', end: () => '+=' + dist(), pin: true, scrub: .6, invalidateOnRefresh: true, anticipatePin: 1 } });
-    }
+  /* ---------- 案例:大圖揭示 ---------- */
+  $$('.cf-media').forEach(m => {
+    gsap.fromTo(m, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.3, ease: 'power4.out',
+      scrollTrigger: { trigger: m, start: 'top 82%', once: true } });
+    gsap.fromTo($('img', m), { scale: 1.18 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: m, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
   /* ---------- AI 區視差 ---------- */
