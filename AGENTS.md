@@ -1,6 +1,8 @@
 # 擎添工業官網（ching-tech.com）
 
-純靜態站，無 build：HTML / CSS / 原生 JS，GSAP、ScrollTrigger、Lenis 放在 `vendor/`。main 一推就上線（GitHub Pages，前面有 Cloudflare）。
+純靜態站，無 build：HTML / CSS / 原生 JS，GSAP、ScrollTrigger、Lenis 放在 `vendor/`。main 一推就上線：ching-tech.com 由 Cloudflare Pages 從 main 部署；GitHub Pages 另外會出一份在 ching-tech.github.io/ching-tech-website/。
+
+找不到的網址由 `404.html` 回應，這頁會出現在任何層級的網址下，裡面的資源要用絕對網址。
 
 ## 改網頁文字後必做
 

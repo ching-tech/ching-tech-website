@@ -2,6 +2,7 @@
 :root {
   --ink: #0e0e10;
   --bone: #ecebe6;
+  --faint-aa: #8a8a8e; /* 品牌 --text-faint 在深底只有 3.5–3.8:1，小字改用這個（bg/bg-soft/surface 上都 ≥4.5:1） */
   --f-cjk: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Ubuntu", "Microsoft JhengHei", sans-serif;
   --f-serif: "Noto Serif TC", "Songti TC", serif;
   --f-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -183,7 +184,7 @@ html.js .ln > span { transform: translateY(110%); }
 .svc li:last-child { border-bottom: 1px solid rgba(236,235,230,.16); }
 .svc button { all: unset; box-sizing: border-box; display: block; width: 100%; cursor: pointer; padding: .35rem 0; }
 .svc button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.svc h3 { font: 700 clamp(1.1rem, min(2.4vw, 3.5vh), 2.3rem)/1.2 var(--f-serif); letter-spacing: -.02em; color: var(--text-faint); transition: color .4s, transform .5s var(--ease); }
+.svc h3 { font: 700 clamp(1.1rem, min(2.4vw, 3.5vh), 2.3rem)/1.2 var(--f-serif); letter-spacing: -.02em; color: var(--faint-aa); transition: color .4s, transform .5s var(--ease); }
 .svc li.on h3 { color: var(--bone); transform: translateX(.9rem); }
 .svc li:hover h3 { color: var(--accent); }
 .svc p { color: var(--text-muted); max-height: 0; opacity: 0; overflow: hidden; transition: max-height .6s var(--ease), opacity .5s, margin .4s; font-size: .98rem; max-width: 36em; }
@@ -230,7 +231,7 @@ html.js .ln > span { transform: translateY(110%); }
 .rail-nodes li { position: relative; width: 0; display: flex; justify-content: center; }
 .rail-nodes li::before { content: ""; position: absolute; top: 9px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg-soft); border: 2px solid rgba(236,235,230,.4); transition: border-color .4s, background .4s; }
 .rail-nodes li.on::before, .rail-nodes li.past::before { border-color: var(--accent); background: var(--accent); }
-.rail-nodes b { position: absolute; top: 34px; white-space: nowrap; font: 500 .9rem/1 var(--f-cjk); color: var(--text-faint); transition: color .4s; }
+.rail-nodes b { position: absolute; top: 34px; white-space: nowrap; font: 500 .9rem/1 var(--f-cjk); color: var(--faint-aa); transition: color .4s; }
 .rail-nodes li.on b { color: var(--bone); }
 .rail-nodes li:first-child b { left: 0; transform: none; } .rail-nodes li:last-child b { right: 0; }
 .rail.static .rail-stage { height: auto; gap: 3rem; }
@@ -301,7 +302,7 @@ html.js .ln > span { transform: translateY(110%); }
 .reach-row:hover { color: var(--accent); padding-left: 1rem; }
 .reach-row:hover .arr { transform: translateX(.6rem); }
 .meta { margin-top: clamp(1.4rem, 3vh, 2.2rem); display: grid; gap: .9rem; }
-.meta dt { font: 500 .8rem/1 var(--f-mono); letter-spacing: .1em; color: var(--text-faint); margin-bottom: .3rem; }
+.meta dt { font: 500 .8rem/1 var(--f-mono); letter-spacing: .1em; color: var(--faint-aa); margin-bottom: .3rem; }
 .meta dd { color: var(--text-muted); }
 .meta dd a { color: var(--accent); }
 .map { width: 100%; align-self: start; margin-top: clamp(0rem, 4vh, 3rem); max-width: 30rem; margin-left: auto; }
@@ -324,7 +325,7 @@ html.js .ln > span { transform: translateY(110%); }
 @media (prefers-reduced-motion: reduce) {
   html.js .hero-kicker, html.js .hero-sub, html.js .hero-actions { opacity: 1; }
   html.js .ln > span { transform: none; }
-  .dot, .scroll-cue i { animation: none; }
+  .dot, .scroll-cue i, .marquee > div { animation: none; }
 }
 
 /* brand: 螢光筆底線、→ 列點、logo glow、pill */
@@ -333,7 +334,6 @@ em { font-style: normal; background: linear-gradient(transparent 84%, var(--acce
 .pts li::before { content: "→"; position: absolute; left: 0; top: 1.05rem; color: var(--accent); font-weight: 700; }
 .nav-brand img { filter: brightness(1.1) drop-shadow(0 0 4px rgba(34,211,238,.7)); }
 .hero-kicker { width: fit-content; padding: .45rem 1rem; border: 1px solid rgba(251,146,60,.5); border-radius: 99px; background: rgba(14,14,16,.5); color: var(--bone); font-size: .82rem; }
-.ai-band h2 em { background: linear-gradient(transparent 84%, var(--accent-2) 84%, var(--accent-2) 94%, transparent 94%); }
 .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
 .chip { padding: .35rem .9rem; border: 1px solid rgba(240,240,240,.18); background: rgba(240,240,240,.04); border-radius: 99px; font-size: .8rem; letter-spacing: .08em; color: var(--chip-text, #d5d7dc); }
 .chip.accent { border-color: rgba(34,211,238,.45); background: rgba(8,145,178,.12); color: var(--accent); }
