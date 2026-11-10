@@ -56,6 +56,7 @@
 
   /* ---------- hero WebGL ---------- */
   const hero = $('#top'), canvas = $('#gl');
+  const coarse = !matchMedia('(pointer: fine)').matches; // 觸控裝置：降解析度、降幀率省電
   const state = { h: 0, hovT: 0, reveal: 0, scroll: 0, mx: .5, my: .5, tx: .5, ty: .5 };
   let draw = () => {}, glOK = false;
 
@@ -109,7 +110,7 @@ void main(){
         [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]].forEach(([k, v]) => gl.texParameteri(gl.TEXTURE_2D, k, v));
         gl.uniform2f(u.img, im.naturalWidth, im.naturalHeight);
         const size = () => {
-          const dpr = Math.min(devicePixelRatio || 1, 1.75);
+          const dpr = Math.min(devicePixelRatio || 1, coarse ? 1.25 : 1.75);
           canvas.width = Math.round(hero.clientWidth * dpr); canvas.height = Math.round(hero.clientHeight * dpr);
           gl.viewport(0, 0, canvas.width, canvas.height); gl.uniform2f(u.res, canvas.width, canvas.height);
         };
@@ -133,10 +134,12 @@ void main(){
   hero.addEventListener('pointermove', e => { state.hovT = e.pointerType === 'mouse' ? 1 : 0; const r = hero.getBoundingClientRect(); state.tx = (e.clientX - r.left) / r.width; state.ty = 1 - (e.clientY - r.top) / r.height; });
   ScrollTrigger.create({ trigger: hero, start: 'top top', end: 'bottom top', scrub: true, onUpdate: s => state.scroll = s.progress });
   const t0 = performance.now();
+  let frame = 0;
   gsap.ticker.add(() => {
     if (!glOK || !heroVisible) return;
+    if (coarse && (frame++ & 1)) return; // 觸控裝置每兩格畫一次，約 30fps
     const t = (performance.now() - t0) / 1000;
-    if (!matchMedia('(pointer: fine)').matches) { state.tx = .5 + Math.sin(t * .35) * .22; state.ty = .5 + Math.cos(t * .27) * .12; } // 觸控裝置沒有游標,自己慢慢飄
+    if (coarse) { state.tx = .5 + Math.sin(t * .35) * .22; state.ty = .5 + Math.cos(t * .27) * .12; } // 觸控裝置沒有游標,自己慢慢飄
     draw(t);
   });
 
@@ -156,12 +159,12 @@ void main(){
     if (reduce) { loader.remove(); return; }
     const o = { y: 1984 };
     gsap.timeline()
-      .to(bar, { scaleX: 1, duration: 1.5, ease: 'power2.inOut' }, 0)
-      .to(o, { y: endYear, duration: 1.5, ease: 'power2.inOut', onUpdate: () => num.textContent = Math.round(o.y) }, 0)
-      .to(loader, { yPercent: -100, duration: .9, ease: 'power4.inOut', delay: .2, onStart: heroIn })
+      .to(bar, { scaleX: 1, duration: .9, ease: 'power2.inOut' }, 0)
+      .to(o, { y: endYear, duration: .9, ease: 'power2.inOut', onUpdate: () => num.textContent = Math.round(o.y) }, 0)
+      .to(loader, { yPercent: -100, duration: .8, ease: 'power4.inOut', delay: .1, onStart: heroIn })
       .add(() => loader.remove());
   };
-  Promise.race([ready, new Promise(r => setTimeout(r, 4000))]).then(go);
+  Promise.race([ready, new Promise(r => setTimeout(r, 1500))]).then(go); // 最多等 1.5 秒，WebGL 晚到就讓它自己淡入
 
   if (reduce) { ['#about','#services','#process'].forEach(s => $(s).classList.add('static')); $('#yr').textContent = new Date().getFullYear(); $$('.beat').forEach(b => b.classList.add('on')); $$('#svc li').forEach(l => l.classList.add('on')); return; }
 

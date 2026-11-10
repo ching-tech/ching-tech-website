@@ -4,9 +4,14 @@ set -e
 cd "$(dirname "$0")/.."
 TXT=$(python3 - <<'P'
 import re,urllib.parse
-s=open('index.html',encoding='utf8').read()+open('js/main.js',encoding='utf8').read()
-s=re.sub(r'<(script|style)[\s\S]*?</\1>','',s)
+html=open('index.html',encoding='utf8').read()
+js=open('js/main.js',encoding='utf8').read()
+# data-* 屬性的值會被 JS 搬進畫面（例如章節指示、流程節點），要另外收
+attrs=' '.join(re.findall(r'\sdata-[\w-]+="([^"]*)"',html))
+s=re.sub(r'<(script|style)[\s\S]*?</\1>','',html)
 s=re.sub(r'<[^>]+>',' ',s)
+# main.js 不剝標籤（JS 裡的 < 和 > 會把中間整段吃掉），整份收
+s+=attrs+js
 chars=sorted(set(c for c in s if not c.isspace())|set('0123456789.,%+ '))
 print(urllib.parse.quote(''.join(chars)))
 P
